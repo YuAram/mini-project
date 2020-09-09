@@ -3,8 +3,31 @@
  */
 package mini.project;
 
+import mini.project.util.Prompt;
+
 public class App {
 
   public static void main(String[] args) {
+    loop:
+      while (true) {
+        String command = Prompt.inputString("명령> ");
+
+        switch (command) {
+          case "/typing/": break;
+          case "/member/": break;
+          case "/setting/": break;
+
+          case "quit":
+          case "exit":
+            System.out.println("*The End*");
+            break loop;
+          default:
+            System.out.println("실행할 수 없는 명령입니다.");
+        }
+        System.out.println(); // 이전 명령의 실행을 구분하기 위해 빈 줄 출력
+      }
+
+  Prompt.close();
   }
 }
+
