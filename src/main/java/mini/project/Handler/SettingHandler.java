@@ -1,7 +1,7 @@
 package mini.project.Handler;
 
 public class SettingHandler {
-  public void add() {
-    System.out.println(".");
+  public void test() {
+    System.out.println("SettingHandler");
   }
 }

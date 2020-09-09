@@ -1,8 +1,8 @@
 package mini.project.Handler;
 
 public class MemberHandler {
-  public void add() {
-    System.out.println("사용자 등록");
+  public void test() {
+    System.out.println("MemberHandler");
   }
 
 }
