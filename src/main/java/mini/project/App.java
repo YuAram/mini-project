@@ -34,7 +34,6 @@ public class App {
         }
         System.out.println();
       }
-
     Prompt.close();
   }
 }
