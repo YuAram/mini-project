@@ -21,16 +21,13 @@ public class App {
           case "/typing/phoneticSymbol": typingHandler.phoneticSymbol(); break;
           case "/typing/word": typingHandler.word(); break;
           case "/typing/sentence": typingHandler.sentence(); break;
-          // 제 부분
 
           case "/member/add": memberHandler.add(); break;
           case "/member/list": memberHandler.list(); break;
           case "/member/update": memberHandler.update(); break;
           case "/member/delete": memberHandler.delete(); break;
-          //소미씨 부분
 
           case "/setting/test": settingHandler.test(); break;
-          // 이후 추가
 
           case "quit":
           case "exit":

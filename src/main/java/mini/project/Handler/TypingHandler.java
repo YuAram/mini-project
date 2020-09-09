@@ -45,7 +45,8 @@ public class TypingHandler {
     double start, end;
 
     for (int i = 1; i <= TEST_COUNT; i++) {
-      question = contents[(int)((Math.random() * contents.length) + 0)]; // 0 ~ 9
+      question = contents[randMake(0, contents.length)]; // 0 ~ 9
+
       System.out.printf("Quiz%02d : %s\n", i ,question);
       start = System.currentTimeMillis();
 
@@ -55,20 +56,28 @@ public class TypingHandler {
       if (question.equals(answer)) {
         score++;
       }
-      scorePrint(score, i, (end - start)/1000.0);
+      scorePrint(score, accuracyCompute(score, i), (end - start)/1000.0);
     }
-    totalScorePrint(score);
+    totalScorePrint(score, accuracyCompute(score, TEST_COUNT));
   }
 
-  private void scorePrint(int score, int count, double d) {
-    System.out.printf("맞춘 개수 : %d개\n",score);
-    System.out.printf("정확도 : %.2f\n", ((double)score / count) * 100);
+  private int randMake(int firstNumber, int length) {
+    return (int)((Math.random() * length) + firstNumber);
+  }
+
+  private double accuracyCompute(int score, int count) {
+    return ((double)score / count) * 100;
+  }
+
+  private void scorePrint(int score, double accuracy, double d) {
+    System.out.printf("맞춘 개수 : %d개\n", score);
+    System.out.printf("정확도 : %.2f\n", accuracy);
     System.out.printf("걸린시간 : %.2f초\n", d);
     System.out.println("- - - - - - - - - - - - - - - - - - - -");
   }
 
-  private void totalScorePrint(int score) {
+  private void totalScorePrint(int score, double accuracy) {
     System.out.printf("Total >> 맞춘 개수(%d개 / %d개), 정확도(%.2f)\n", 
-        score, TEST_COUNT, ((double)score / TEST_COUNT) * 100);
+        score, TEST_COUNT, accuracy);
   }
 }
