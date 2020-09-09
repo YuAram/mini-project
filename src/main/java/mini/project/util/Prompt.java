@@ -20,6 +20,10 @@ public class Prompt {
     return Date.valueOf(inputString(title));
   }
 
+  public static char inputChar(String title) {
+    return inputString(title).charAt(0);
+  }
+
   // 프롬프트의 사용이 모두 끝났으면 
   // 이 메서드를 호출하여 System.in 입력 스트림 자원을 해제하도록 한다.
   public static void close() {
