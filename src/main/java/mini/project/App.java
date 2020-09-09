@@ -18,7 +18,7 @@ public class App {
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
-          case "s": typingHandler.phoneticSymbol(); break;
+          case "/typing/phoneticSymbol": typingHandler.phoneticSymbol(); break;
           case "/typing/word": typingHandler.word(); break;
           // 제 부분
 
