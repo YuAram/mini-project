@@ -20,8 +20,7 @@ public class App {
         switch (command) {
           case "/typing/test": typingHandler.test(); break;
           case "/typing/phoneticSymbol": typingHandler.phoneticSymbol(); break;
-          //          case "/typing/word"
-          case "w": typingHandler.word(); break;
+          case "/typing/word": typingHandler.word(); break;
           // 제 부분
 
           case "/member/test": memberHandler.test(); break;
@@ -30,7 +29,7 @@ public class App {
           case "/member/update": memberHandler.update(); break;
           case "/member/delete": memberHandler.delete(); break;
           //소미씨 부분
-          
+
           case "/setting/test": settingHandler.test(); break;
           // 이후 추가
 
