@@ -12,6 +12,7 @@ public class App {
   }
 
   public static void main(String[] args) {
+  System.out.println("ddddddd");
   System.out.println("오호라...!!!");
     System.out.print("유아람!");
 
