@@ -1,5 +1,6 @@
 package mini.project;
 
+import mini.project.Handler.MemberHandler;
 import mini.project.Handler.SettingHandler;
 import mini.project.Handler.TypingHandler;
 import mini.project.util.Prompt;
@@ -9,7 +10,7 @@ public class App {
   public static void main(String[] args) {
 
     TypingHandler typingHandler = new TypingHandler();
-    //MemberHandler memberHandler = new MemberHandler();
+    MemberHandler memberHandler = new MemberHandler();
     SettingHandler settingHandler = new SettingHandler();
 
     loop:
@@ -23,7 +24,7 @@ public class App {
           case "w": typingHandler.word(); break;
           // 제 부분
 
-          //case "/member/test": memberHandler.test(); break;
+          case "/member/test": memberHandler.test(); break;
           // 소미씨 부분
 
           case "/setting/test": settingHandler.test(); break;
