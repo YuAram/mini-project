@@ -36,5 +36,6 @@ public class Member {
   }
   public void setAccuracy(double accuracy) {
     this.accuracy = accuracy;
+    
   }
 }
