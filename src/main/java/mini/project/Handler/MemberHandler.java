@@ -7,9 +7,7 @@ import mini.project.util.Prompt;
 public class MemberHandler {
   List<Member> memberList;
 
-  public MemberHandler(List<Member> list) {
-    this.memberList = list;
-  }
+
   public void test() {
     System.out.println("MemberHandler");
   }
@@ -41,11 +39,13 @@ public class MemberHandler {
   
   public void update() {
     System.out.println("[회원 변경]");
-  
+    
+    Member member = new Member();
+    
     String name = Prompt.inputString(
         String.format("이름(%s)? ", member.getName()));
-    String email = Prompt.inputString(
-        String.format("목표타수(%s)? ", member.getEmail()));
+    int GoalTypingNumber = Prompt.inputInt(
+        String.format("목표타수(%s)? ", member.getGoalTypingNumber()));
 
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
@@ -55,9 +55,28 @@ public class MemberHandler {
       
     }
   }
+  public void delete() {
+    System.out.println("[회원 삭제]");
+    int no = Prompt.inputInt("번호? ");
+    int index = indexOf(no);
+
+    String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    if (!response.equalsIgnoreCase("y")) {
+      System.out.println("회원 삭제를 취소하였습니다.");
+      return;
+    }
+    memberList.remove(index);
+    System.out.println("회원을 삭제하였습니다.");
   
   
-  
-  
-  
+  }
+  private int indexOf(int no) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (member.getNo() == no) {
+        return i;
+      }
+    }
+    return -1;
+  }
 }
