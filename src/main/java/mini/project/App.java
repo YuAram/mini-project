@@ -20,6 +20,7 @@ public class App {
         switch (command) {
           case "/typing/phoneticSymbol": typingHandler.phoneticSymbol(); break;
           case "/typing/word": typingHandler.word(); break;
+          case "/typing/sentence": typingHandler.sentence(); break;
           // 제 부분
 
           case "/member/add": memberHandler.add(); break;

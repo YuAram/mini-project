@@ -13,6 +13,13 @@ public class TypingHandler {
   String[] words = {"potato", "onion", "corn", "pizza", "chicken", 
       "hamburger", "noodles", "noodles", "noodles", "bulgogi"};
 
+  String[] sentences = {"Think like a man of action and act like man of thought.",
+      "Courage is very important. Like a muscle, it is strengthened by use.",
+      "Life is the art of drawing sufficient conclusions from insufficient premises.",
+      "By doubting we come at the truth.",
+      "A man that hath no virtue in himself, ever envieth virtue in others.",
+  "COVID-19 OUT!"};
+
   public void phoneticSymbol() {
     System.out.println("[자리 연습]");
 
@@ -23,6 +30,12 @@ public class TypingHandler {
     System.out.println("[낱말 연습]");
 
     typingPractice(words);
+  }
+
+  public void sentence() {
+    System.out.println("[낱말 연습]");
+
+    typingPractice(sentences);
   }
 
   private void typingPractice(String[] contents) {
