@@ -2,6 +2,7 @@ package mini.project.Handler;
 
 import java.util.List;
 import mini.project.domain.Member;
+import mini.project.domain.Setting;
 import mini.project.util.Prompt;
 
 public class MemberHandler {
@@ -14,24 +15,25 @@ public class MemberHandler {
   public void add() {
     System.out.println("[사용자 등록]");
 
+    int no;
+
     Member member = new Member();
-    member.setNo(Prompt.inputInt("번호? "));
+    no = Prompt.inputInt("번호? ");
+    member.setNo(no);
     member.setName(Prompt.inputString("이름? "));
-    member.setGoalTypingNumber(Prompt.inputInt("목표타수? "));
 
     memberList.add(member);
+    Setting.setUserNo(no);
   }
 
   public void list() {
     System.out.println("[사용자 목록 조회]");
-    System.out.println("번호 / 이름 / 목표타수 / 평균타수 / 정확도");
+    System.out.println("번호 / 이름 / 정확도");
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      System.out.printf("%d, %s, %f, %f, %f\n",
+      System.out.printf("%d, %s, %f\n",
           member.getNo(),
           member.getName(),
-          member.getGoalTypingNumber(),
-          member.getAverageTypingNumber(),
           member.getAccuracy());
     }
   }
@@ -47,8 +49,6 @@ public class MemberHandler {
 
     String name = Prompt.inputString(
         String.format("이름(%s)? ", member.getName()));
-    int goalTypingNumber = Prompt.inputInt(
-        String.format("목표타수(%s)? ", member.getGoalTypingNumber()));
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
@@ -57,7 +57,6 @@ public class MemberHandler {
     }
 
     member.setName(name);
-    member.setGoalTypingNumber(goalTypingNumber);
   }
 
   public void delete() {

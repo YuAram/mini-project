@@ -2,6 +2,7 @@ package mini.project.Handler;
 
 import java.util.List;
 import mini.project.domain.Member;
+import mini.project.domain.Setting;
 import mini.project.util.Prompt;
 
 public class TypingHandler {
@@ -50,8 +51,16 @@ public class TypingHandler {
     String answer;
     int score = 0;
     double startTime, endTime;
+    double accuracy;
+    int index = indexOf(Setting.getUserNo());
+    Member member;
 
-    for (int i = 1; i <= TEST_COUNT; i++) {
+    if (index == -1) {
+      System.out.println("사용자 등록 먼저 해주세요.");
+      return;
+    }
+
+    for (int i = 1; i <= Setting.getTestNumber(); i++) {
       question = contents[randMake(0, contents.length)]; // 0 ~ 9
 
       System.out.printf("Quiz%02d : %s\n", i ,question);
@@ -63,13 +72,23 @@ public class TypingHandler {
       if (question.equals(answer)) {
         score++;
       }
+
       scorePrint(score, accuracyCompute(score, i), timeCompute(startTime, endTime));
     }
-    totalScorePrint(score, accuracyCompute(score, TEST_COUNT));
+    accuracy = accuracyCompute(score, Setting.getTestNumber());
+    totalScorePrint(score, accuracy);
+
+    member = memberList.get(index);
+    member.setTestCount(member.getTestCount() + 1);
+    member.setAccuracy(userAccuracyCompute(member.getAccuracy(), accuracy, member.getTestCount()));
   }
 
   private int randMake(int firstNumber, int length) {
     return (int)((Math.random() * length) + firstNumber);
+  }
+
+  private double userAccuracyCompute(double oldAccuracy, double newAccuracy, int testCount) {
+    return (oldAccuracy * (testCount - 1) + newAccuracy) / testCount;
   }
 
   private double accuracyCompute(int score, int count) {
@@ -77,7 +96,7 @@ public class TypingHandler {
   }
 
   private double timeCompute(double start, double end) {
-    return (start - end)/1000.0; 
+    return (end - start)/1000.0; 
   }
 
   private void scorePrint(int score, double accuracy, double d) {
@@ -89,6 +108,16 @@ public class TypingHandler {
 
   private void totalScorePrint(int score, double accuracy) {
     System.out.printf("Total >> 맞춘 개수(%d개 / %d개), 정확도(%.2f)\n", 
-        score, TEST_COUNT, accuracy);
+        score, Setting.getTestNumber(), accuracy);
+  }
+
+  private int indexOf(int no) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (member.getNo() == no) {
+        return i;
+      }
+    }
+    return -1;
   }
 }

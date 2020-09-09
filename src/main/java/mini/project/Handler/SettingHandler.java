@@ -20,19 +20,20 @@ public class SettingHandler {
 
   public void show() {
     System.out.printf("현재 사용자 번호 : %d\n", Setting.getUserNo());
-    System.out.printf("현재 사용자 번호 : %d\n", Setting.getTestNumber());
+    System.out.printf("현재 테스트 횟수 : %d\n", Setting.getTestNumber());
   }
 
   public void userNo() {
     System.out.println("[사용자 설정]");
-    int index = indexOf(Prompt.inputInt("변경할 사용자 번호(" + Setting.getUserNo() + ")? "));
+    int userNo = Prompt.inputInt("변경할 사용자 번호(" + Setting.getUserNo() + ")? ");
+    int index = indexOf(userNo);
 
     if (index == -1) {
       System.out.println("해당 번호의 회원이 없습니다.");
       return;
     }
 
-    Setting.setUserNo(index);
+    Setting.setUserNo(userNo);
   }
 
   public void testNumber() {
