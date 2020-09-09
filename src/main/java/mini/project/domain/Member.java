@@ -6,6 +6,7 @@ public class Member {
   private double averageTypingNumber;
   private double goalTypingNumber;
   private double accuracy;
+  private int testCount;
 
   public int getNo() {
     return no;
@@ -36,6 +37,11 @@ public class Member {
   }
   public void setAccuracy(double accuracy) {
     this.accuracy = accuracy;
-    
+  }
+  public int getTestCount() {
+    return testCount;
+  }
+  public void setTestCount(int testCount) {
+    this.testCount = testCount;
   }
 }

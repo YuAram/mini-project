@@ -1,24 +1,31 @@
 package mini.project.Handler;
 
+import java.util.List;
+import mini.project.domain.Member;
 import mini.project.util.Prompt;
 
 public class TypingHandler {
 
-  static final int TEST_COUNT = 5;
+  List<Member> memberList;
 
   String[] phoneticSymbols = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
       "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
       "u", "v", "w", "x", "y", "z"};
 
   String[] words = {"potato", "onion", "corn", "pizza", "chicken", 
-      "hamburger", "noodles", "noodles", "noodles", "bulgogi"};
+      "hamburger", "noodles", "candy", "chocolate", "bulgogi"};
 
   String[] sentences = {"Think like a man of action and act like man of thought.",
       "Courage is very important. Like a muscle, it is strengthened by use.",
       "Life is the art of drawing sufficient conclusions from insufficient premises.",
       "By doubting we come at the truth.",
       "A man that hath no virtue in himself, ever envieth virtue in others.",
+      "When money speaks, the truth keeps silent.",
   "COVID-19 OUT!"};
+
+  public TypingHandler(List<Member> memberList) {
+    this.memberList = memberList;
+  }
 
   public void phoneticSymbol() {
     System.out.println("[자리 연습]");
@@ -42,21 +49,21 @@ public class TypingHandler {
     String question;
     String answer;
     int score = 0;
-    double start, end;
+    double startTime, endTime;
 
     for (int i = 1; i <= TEST_COUNT; i++) {
       question = contents[randMake(0, contents.length)]; // 0 ~ 9
 
       System.out.printf("Quiz%02d : %s\n", i ,question);
-      start = System.currentTimeMillis();
+      startTime = System.currentTimeMillis();
 
       answer = Prompt.inputString("~> ");
-      end = System.currentTimeMillis();
+      endTime = System.currentTimeMillis();
 
       if (question.equals(answer)) {
         score++;
       }
-      scorePrint(score, accuracyCompute(score, i), (end - start)/1000.0);
+      scorePrint(score, accuracyCompute(score, i), timeCompute(startTime, endTime));
     }
     totalScorePrint(score, accuracyCompute(score, TEST_COUNT));
   }
@@ -67,6 +74,10 @@ public class TypingHandler {
 
   private double accuracyCompute(int score, int count) {
     return ((double)score / count) * 100;
+  }
+
+  private double timeCompute(double start, double end) {
+    return (start - end)/1000.0; 
   }
 
   private void scorePrint(int score, double accuracy, double d) {

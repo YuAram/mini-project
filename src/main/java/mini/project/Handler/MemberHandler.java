@@ -1,12 +1,15 @@
 package mini.project.Handler;
 
-import java.util.LinkedList;
 import java.util.List;
 import mini.project.domain.Member;
 import mini.project.util.Prompt;
 
 public class MemberHandler {
-  List<Member> memberList = new LinkedList<>();
+  List<Member> memberList;
+
+  public MemberHandler(List<Member> list) {
+    this.memberList = list;
+  }
 
   public void add() {
     System.out.println("[사용자 등록]");
@@ -20,25 +23,25 @@ public class MemberHandler {
   }
 
   public void list() {
-    System.out.println("사용자 목록 조회");
-
+    System.out.println("[사용자 목록 조회]");
+    System.out.println("번호 / 이름 / 목표타수 / 평균타수 / 정확도");
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
       System.out.printf("%d, %s, %f, %f, %f\n",
           member.getNo(),
           member.getName(),
-          member.getAverageTypingNumber(),
           member.getGoalTypingNumber(),
+          member.getAverageTypingNumber(),
           member.getAccuracy());
     }
   }
 
   public void update() {
-    System.out.println("[회원 변경]");
+    System.out.println("[사용자 정보 변경]");
     Member member = findByNo(Prompt.inputInt("번호? "));
 
     if (member == null) {
-      System.out.println("해당 번호의 회원이 없습니다.");
+      System.out.println("해당 번호의 사용자가 없습니다.");
       return;
     }
 
@@ -49,7 +52,7 @@ public class MemberHandler {
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
-      System.out.println("회원 변경을 취소하였습니다.");
+      System.out.println("사용자 정보 변경을 취소하였습니다.");
       return;
     }
 
@@ -58,23 +61,23 @@ public class MemberHandler {
   }
 
   public void delete() {
-    System.out.println("[회원 삭제]");
+    System.out.println("[사용자 삭제]");
     int no = Prompt.inputInt("번호? ");
     int index = indexOf(no);
 
     if (index == -1) {
-      System.out.println("해당 번호의 회원이 없습니다.");
+      System.out.println("해당 번호의 사용자가 없습니다.");
       return;
     }
 
     String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
-      System.out.println("회원 삭제를 취소하였습니다.");
+      System.out.println("사용자 삭제를 취소하였습니다.");
       return;
     }
 
     memberList.remove(index);
-    System.out.println("회원을 삭제하였습니다.");
+    System.out.println("사용자을 삭제하였습니다.");
   }
 
   private Member findByNo(int no) {
