@@ -18,20 +18,14 @@ public class App {
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
-          case "/typing/test": typingHandler.test(); break;
-          case "/typing/phoneticSymbol": typingHandler.phoneticSymbol(); break;
+          case "s": typingHandler.phoneticSymbol(); break;
           case "/typing/word": typingHandler.word(); break;
           // 제 부분
 
-          case "/member/test": memberHandler.test(); break;
-          //          case "/member/add": memberHandler.add(); break;
-          //          case "/member/list": memberHandler.list(); break;
-          //          case "/member/update": memberHandler.update(); break;
-          //          case "/member/delete": memberHandler.delete(); break;
-          case "a": memberHandler.add(); break;
-          case "l": memberHandler.list(); break;
-          case "u": memberHandler.update(); break;
-          case "d": memberHandler.delete(); break;
+          case "/member/add": memberHandler.add(); break;
+          case "/member/list": memberHandler.list(); break;
+          case "/member/update": memberHandler.update(); break;
+          case "/member/delete": memberHandler.delete(); break;
           //소미씨 부분
 
           case "/setting/test": settingHandler.test(); break;

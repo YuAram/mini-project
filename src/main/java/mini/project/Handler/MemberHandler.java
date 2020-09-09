@@ -8,10 +8,6 @@ import mini.project.util.Prompt;
 public class MemberHandler {
   List<Member> memberList = new LinkedList<>();
 
-  public void test() {
-    System.out.println("MemberHandler");
-  }
-
   public void add() {
     System.out.println("[사용자 등록]");
 
