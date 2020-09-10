@@ -61,7 +61,7 @@ public class TypingHandler {
     }
 
     for (int i = 1; i <= Setting.getTestNumber(); i++) {
-      question = contents[randMake(0, contents.length)]; // 0 ~ 9
+      question = contents[randMake(0, contents.length)];
 
       System.out.printf("Quiz%02d : %s\n", i ,question);
       startTime = System.currentTimeMillis();
