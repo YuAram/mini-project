@@ -50,7 +50,8 @@ public class TypingHandler {
     String question;
     String answer;
     int score = 0;
-    double startTime, endTime;
+    double startTime, endTime, currentTime;
+    double time = 0;
     double accuracy;
     int index = indexOf(Setting.getUserNo());
     Member member;
@@ -71,12 +72,15 @@ public class TypingHandler {
 
       if (question.equals(answer)) {
         score++;
+        currentTime = timeCompute(startTime, endTime);
+        time += currentTime;
+      } else {
+        currentTime = 0.0;
       }
-
-      scorePrint(score, accuracyCompute(score, i), timeCompute(startTime, endTime));
+      scorePrint(score, accuracyCompute(score, i), currentTime);
     }
     accuracy = accuracyCompute(score, Setting.getTestNumber());
-    totalScorePrint(score, accuracy);
+    totalScorePrint(score, accuracy, timeAverageCompute(time, score));
 
     member = memberList.get(index);
     member.setTestCount(member.getTestCount() + 1);
@@ -96,19 +100,26 @@ public class TypingHandler {
   }
 
   private double timeCompute(double start, double end) {
-    return (end - start)/1000.0; 
+    return (end - start) / 1000.0; 
   }
 
-  private void scorePrint(int score, double accuracy, double d) {
-    System.out.printf("맞춘 개수 : %d개\n", score);
-    System.out.printf("정확도 : %.2f\n", accuracy);
-    System.out.printf("걸린시간 : %.2f초\n", d);
+  private double timeAverageCompute(double time, int count) {
+    return time / count; 
+  }
+
+  private void scorePrint(int score, double accuracy, double countTime) {
+    System.out.printf(">> 맞춘 개수 : %d개 / 정확도 : %.2f / 걸린시간 : %.2f초\n"
+        ,score ,accuracy ,countTime);
     System.out.println("- - - - - - - - - - - - - - - - - - - -");
   }
 
-  private void totalScorePrint(int score, double accuracy) {
-    System.out.printf("Total >> 맞춘 개수(%d개 / %d개), 정확도(%.2f)\n", 
-        score, Setting.getTestNumber(), accuracy);
+  private void totalScorePrint(int score, double accuracy, double averageCountTime) {
+    System.out.println("- - - - - - - - - - - - - - - - - - - -");
+    System.out.printf("* Total\n"
+        + ">> 맞춘 개수 : %d개 / %d개\n"
+        + ">> 정확도 : %.2f\n"
+        + ">> 평균시간 : %.2f초\n",
+        score, Setting.getTestNumber(), accuracy, averageCountTime);
   }
 
   private int indexOf(int no) {

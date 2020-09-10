@@ -23,11 +23,9 @@ public class App {
 
     loop:
       while (true) {
-        if(memberList.isEmpty()) {
-          promptUserName = "None";
-        } else {
-          promptUserName = Setting.getUserName();
-        }
+        if(memberList.isEmpty()) promptUserName = "None";
+        else promptUserName = Setting.getUserName();
+
         String command = Prompt.inputString("명령(" + promptUserName + ")> ");
 
         switch (command) {

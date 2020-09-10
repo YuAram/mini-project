@@ -7,7 +7,15 @@ public class Prompt {
 
   public static String inputString(String title) {
     System.out.print(title);
-    return keyboardScan.nextLine();
+
+    String input;
+    try {
+      input = keyboardScan.nextLine();
+    } catch(java.util.NoSuchElementException e) {
+      //System.err.println("##### inputString() input Error \n");
+      input = " ";
+    }
+    return input;
   }
 
   public static int inputInt(String title) {
@@ -15,8 +23,8 @@ public class Prompt {
     try {
       input = Integer.parseInt(inputString(title));
     } catch(NumberFormatException  e) {
-      input = -1;
       //System.err.println("##### inputInt() input Error \n");
+      input = -1;
     }
     return input;
   }
