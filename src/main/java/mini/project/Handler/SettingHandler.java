@@ -50,7 +50,7 @@ public class SettingHandler {
     int testNumber = Prompt.inputInt("변경할 테스트 횟수(" + Setting.getTestNumber() + ")? ");
 
     if ((testNumber < 1) || (testNumber > 100)) {
-      System.out.println("### 설정한 테스트 횟수가 너무 많거나 적습니다.");
+      System.out.println("### 설정한 테스트 횟수를 다시 입력해주세요.(1~100)");
       return;
     }
 

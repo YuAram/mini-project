@@ -39,12 +39,16 @@ public class MemberHandler {
     while(true) {
       no = Prompt.inputInt("번호? ");
 
-      index = indexOf(no);
-
-      if (index != -1) {
-        System.out.println("### 해당 번호가 이미 등록되어 있습니다.");
+      if(no == -1) {
+        System.out.println("### 숫자만 입력 해주세요."); 
       } else {
-        break;
+        index = indexOf(no);
+
+        if (index != -1) {
+          System.out.println("### 해당 번호가 이미 등록되어 있습니다.");
+        } else {
+          break;
+        }
       }
     }
     name = Prompt.inputString("이름? ");
@@ -71,8 +75,13 @@ public class MemberHandler {
 
   public void update() {
     System.out.println("[사용자 정보 변경]");
-    Member member = findByNo(Prompt.inputInt("번호? "));
+    int no = Prompt.inputInt("번호? ");
+    if(no == -1) {
+      System.out.println("### 숫자만 입력 해주세요.");
+      return;
+    }
 
+    Member member = findByNo(no);
     if (member == null) {
       System.out.println("### 해당 번호의 사용자가 없습니다.");
       return;
@@ -94,8 +103,12 @@ public class MemberHandler {
   public void delete() {
     System.out.println("[사용자 삭제]");
     int no = Prompt.inputInt("번호? ");
-    int index = indexOf(no);
+    if (no == -1) {
+      System.out.println("### 숫자만 입력 해주세요.");
+      return;
+    }
 
+    int index = indexOf(no);
     if (index == -1) {
       System.out.println("### 해당 번호의 사용자가 없습니다.");
       return;

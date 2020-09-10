@@ -11,7 +11,14 @@ public class Prompt {
   }
 
   public static int inputInt(String title) {
-    return Integer.parseInt(inputString(title));
+    int input = 0;
+    try {
+      input = Integer.parseInt(inputString(title));
+    } catch(NumberFormatException  e) {
+      input = -1;
+      //System.err.println("##### inputInt() input Error \n");
+    }
+    return input;
   }
 
   public static void close() {
