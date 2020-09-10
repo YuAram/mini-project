@@ -104,6 +104,7 @@ public class TypingHandler {
   }
 
   private double timeAverageCompute(double time, int count) {
+    if (count == 0) return 0.0;
     return time / count; 
   }
 
