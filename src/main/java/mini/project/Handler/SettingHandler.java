@@ -20,7 +20,11 @@ public class SettingHandler {
 
   public void show() {
     System.out.println("[설정 조회]");
-    System.out.printf("현재 사용자 번호 : %d\n", Setting.getUserNo());
+    if(Setting.getUserNo() == -1) {
+      System.out.printf("현재 사용자 번호 : None.\n");
+    } else {
+      System.out.printf("현재 사용자 번호 : %d\n", Setting.getUserNo());
+    }
     System.out.printf("현재 테스트 횟수 : %d\n", Setting.getTestNumber());
   }
 

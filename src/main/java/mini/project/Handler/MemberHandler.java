@@ -18,7 +18,19 @@ public class MemberHandler {
     int no;
 
     Member member = new Member();
-    no = Prompt.inputInt("번호? ");
+
+    while(true) {
+      no = Prompt.inputInt("번호? ");
+
+      int index = indexOf(no);
+
+      if (index != -1) {
+        System.out.println("해당 번호가 이미 등록되어 있습니다.");
+      } else {
+        break;
+      }
+    }
+
     member.setNo(no);
     member.setName(Prompt.inputString("이름? "));
 
@@ -31,7 +43,7 @@ public class MemberHandler {
     System.out.println("번호 / 이름 / 정확도");
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      System.out.printf("%d, %s, %f\n",
+      System.out.printf("%d, %s, %.2f\n",
           member.getNo(),
           member.getName(),
           member.getAccuracy());
@@ -76,6 +88,12 @@ public class MemberHandler {
     }
 
     memberList.remove(index);
+    if(memberList.isEmpty()) {
+      Setting.setUserNo(-1);
+    } else {
+      Setting.setUserNo(memberList.get(0).getNo());
+    }
+
     System.out.println("사용자을 삭제하였습니다.");
   }
 
