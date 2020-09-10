@@ -9,11 +9,12 @@ Member.java
  - no, name, accuracy, testCount 변수의 Setter/Getter 메서드 정의
  
 Setting.java
- - userNo, testNumber 스태틱 변수 정의
- - userNo, testNumber 변수의  Setter/Getter 메서드 정의
+ - userNo, userName, testNumber 스태틱 변수 정의
+ - userNo, userName, testNumber 변수의  Setter/Getter 메서드 정의
 
 ### src/main/java/mini/project/Handler
 MemberHandler.java
+ - my() : 현재 사용자 정보 조회 메서드
  - add() : 사용자 등록 메서드
  - list() : 사용자 목록 조회 메서드
  - update() : 사용자 정보 변경 메서트

@@ -18,35 +18,39 @@ public class SettingHandler {
     this.memberList = memberList;
   }
 
-  public void show() {
+  public void list() {
     System.out.println("[설정 조회]");
-    if(Setting.getUserNo() == -1) {
-      System.out.printf("현재 사용자 번호 : None.\n");
-    } else {
-      System.out.printf("현재 사용자 번호 : %d\n", Setting.getUserNo());
-    }
+
     System.out.printf("현재 테스트 횟수 : %d\n", Setting.getTestNumber());
+
+    if(Setting.getUserNo() == -1) {
+      System.out.println("현재 등록된 사용자가 없습니다. 사용자를 등록 해주세요.");
+    } else {
+      System.out.printf("현재 사용자 번호 : %d(%s)\n", Setting.getUserNo(), Setting.getUserName());
+    }
   }
 
   public void userNo() {
-    System.out.println("[사용자 설정]");
+    System.out.println("[현재 사용자 설정]");
+
     int userNo = Prompt.inputInt("변경할 사용자 번호(" + Setting.getUserNo() + ")? ");
     int index = indexOf(userNo);
 
     if (index == -1) {
-      System.out.println("해당 번호의 회원이 없습니다.");
+      System.out.println("### 해당 번호의 회원이 없습니다.");
       return;
     }
 
     Setting.setUserNo(userNo);
+    Setting.setUserName(memberList.get(index).getName());
   }
 
   public void testNumber() {
     System.out.println("[테스트 횟수 설정]");
     int testNumber = Prompt.inputInt("변경할 테스트 횟수(" + Setting.getTestNumber() + ")? ");
 
-    if ((testNumber < 0) || (testNumber > 100)) {
-      System.out.println("설정한 테스트 횟수가 너무 많거나 적습니다.");
+    if ((testNumber < 1) || (testNumber > 100)) {
+      System.out.println("### 설정한 테스트 횟수가 너무 많거나 적습니다.");
       return;
     }
 

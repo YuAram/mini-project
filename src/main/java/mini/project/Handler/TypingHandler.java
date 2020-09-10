@@ -56,17 +56,17 @@ public class TypingHandler {
     Member member;
 
     if (index == -1) {
-      System.out.println("사용자 등록 먼저 해주세요.");
+      System.out.println("### 사용자 등록 먼저 해주세요~");
       return;
     }
 
     for (int i = 1; i <= Setting.getTestNumber(); i++) {
       question = contents[randMake(0, contents.length)];
 
-      System.out.printf("Quiz%02d : %s\n", i ,question);
+      System.out.printf("%02d.[%s]\n", i ,question);
       startTime = System.currentTimeMillis();
 
-      answer = Prompt.inputString("~> ");
+      answer = Prompt.inputString(" ~> ");
       endTime = System.currentTimeMillis();
 
       if (question.equals(answer)) {

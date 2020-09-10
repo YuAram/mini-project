@@ -12,30 +12,49 @@ public class MemberHandler {
     this.memberList = list;
   }
 
+  public void my() {
+    System.out.println("[현재 사용자 정보]");
+    int index = indexOf(Setting.getUserNo());
+
+    if (index == -1) {
+      System.out.println("### 사용자를 먼저 등록해주세요.");
+      return;
+    }
+
+    Member member = memberList.get(index);
+    System.out.printf("번호 : %d\n", member.getNo());
+    System.out.printf("이름 : %s\n", member.getName());
+    System.out.printf("정확도 : %.2f\n", member.getAccuracy());
+  }
+
   public void add() {
     System.out.println("[사용자 등록]");
 
     int no;
+    int index;
+    String name;
 
     Member member = new Member();
 
     while(true) {
       no = Prompt.inputInt("번호? ");
 
-      int index = indexOf(no);
+      index = indexOf(no);
 
       if (index != -1) {
-        System.out.println("해당 번호가 이미 등록되어 있습니다.");
+        System.out.println("### 해당 번호가 이미 등록되어 있습니다.");
       } else {
         break;
       }
     }
+    name = Prompt.inputString("이름? ");
 
     member.setNo(no);
-    member.setName(Prompt.inputString("이름? "));
-
+    member.setName(name);
     memberList.add(member);
+
     Setting.setUserNo(no);
+    Setting.setUserName(name);
   }
 
   public void list() {
@@ -55,7 +74,7 @@ public class MemberHandler {
     Member member = findByNo(Prompt.inputInt("번호? "));
 
     if (member == null) {
-      System.out.println("해당 번호의 사용자가 없습니다.");
+      System.out.println("### 해당 번호의 사용자가 없습니다.");
       return;
     }
 
@@ -69,6 +88,7 @@ public class MemberHandler {
     }
 
     member.setName(name);
+    Setting.setUserName(name);
   }
 
   public void delete() {
@@ -77,7 +97,7 @@ public class MemberHandler {
     int index = indexOf(no);
 
     if (index == -1) {
-      System.out.println("해당 번호의 사용자가 없습니다.");
+      System.out.println("### 해당 번호의 사용자가 없습니다.");
       return;
     }
 
@@ -90,8 +110,10 @@ public class MemberHandler {
     memberList.remove(index);
     if(memberList.isEmpty()) {
       Setting.setUserNo(-1);
+      Setting.setUserName("");
     } else {
       Setting.setUserNo(memberList.get(0).getNo());
+      Setting.setUserName(memberList.get(0).getName());
     }
 
     System.out.println("사용자을 삭제하였습니다.");
