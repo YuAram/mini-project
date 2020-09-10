@@ -41,7 +41,7 @@ public class TypingHandler {
   }
 
   public void sentence() {
-    System.out.println("[낱말 연습]");
+    System.out.println("[짧은 글 연습]");
 
     typingPractice(sentences);
   }
