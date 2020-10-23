@@ -3,6 +3,22 @@
 
 ## Control
 ```
+### typing(타자연습)
+ - /typing/phoneticSymbol : 자리 연습
+ - /typing/word : 짧은 글 연습
+ - /typing/sentence : 긴 글 연습
+ 
+### member (사용자관리)
+ - /member/my : 현재 사용자 정보
+ - /member/add : 사용자 등록
+ - /member/list : 사용자 목록 조회
+ - /member/update : 사용자 정보 변경
+ - /member/delete : 사용자 삭제
+ 
+### setting (설정)
+ - /setting/list : 설정 조회
+ - /setting/userNo : 사용자 설정
+ - /setting/testNumber : 테스트 횟수 
 ```
 
 ## Source
