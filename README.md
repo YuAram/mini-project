@@ -1,4 +1,4 @@
-# 타자 연습 프로그램 mini-project
+# 타자 연습 프로그램 [mini-project]
 - **bitcamp-200713 1차 미니 프로젝트** (20200909 ~ 20200910)
 
 ## Control
