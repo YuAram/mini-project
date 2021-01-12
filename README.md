@@ -58,3 +58,12 @@ Prompt.java
 
 ### src/main/java/mini/project/App.java
  - main()
+
+## Result
+
+![1](https://user-images.githubusercontent.com/13977414/104327614-53570300-552e-11eb-9a42-ddcaff5d77f0.jpg)
+![2](https://user-images.githubusercontent.com/13977414/104327625-5651f380-552e-11eb-8710-60b4ca59cdde.jpg)
+![3](https://user-images.githubusercontent.com/13977414/104327632-57832080-552e-11eb-84a8-8aff779a2d98.jpg)
+![4](https://user-images.githubusercontent.com/13977414/104327643-594ce400-552e-11eb-9b99-ee3c3f340a6d.jpg)
+![5](https://user-images.githubusercontent.com/13977414/104327651-5a7e1100-552e-11eb-9b6e-f71d66da4f61.jpg)
+
